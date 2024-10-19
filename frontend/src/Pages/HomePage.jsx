@@ -7,6 +7,7 @@ import CoursesListed from "../Components/CoursesListed";
 import { useEffect, useState } from "react";
 import { UniversitiesList } from "../assets/UniversitiesList";
 import { CoursesList } from "../assets/CoursesList";
+import { Toaster } from "react-hot-toast";
 
 const HomePage = () => {
   const [universities, setUniversities] = useState([]);
@@ -21,6 +22,7 @@ const HomePage = () => {
     <div className="flex flex-col min-h-screen w-full">
       {/* Navigation Bar */}
       <NavBar />
+      <Toaster />
 
       {/* Main Content */}
       <main className="opacity-0 animate-fadeIn">
@@ -67,8 +69,8 @@ const HomePage = () => {
             Courses Listed
           </h2>
           <div className="flex flex-row w-full items-center justify-evenly py-5 my-5">
-            {courses.map((course) => (
-              <CoursesListed course={course} />
+            {courses.map((course, index) => (
+              <CoursesListed key={index} course={course} />
             ))}
           </div>
         </div>
